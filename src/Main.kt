@@ -14,11 +14,11 @@ fun billsAndTipsLogbook(vararg billsAndTips: MutableList<Any?>) {
 }
 
 fun main() {
-//  Declare some variables that will be used
+//  Declare and initialize some variables that will be used
     val billsAndTips = mutableListOf<Any?>()
     var userInput: String? = null
     var tip = 0f
-    var tipCount = 0
+    
 //  Display greeting
     println("**************************************************")
     println("Welcome to the Tip Calculator Application!")
@@ -44,19 +44,23 @@ fun main() {
         when (userInput) {
             "1" -> billsAndTipsLogbook(billsAndTips)
             "2" -> {
-                tipCount += 1
+                // Prompt for the initial bill amount.
                 print("Enter the bill amount: ")
                 var bill = readLine()!!
                 var floatBill = bill.toFloat()
 
+                // Prompt for what tip percentage to calculate.
                 print("Enter the tip percentage: ")
                 var tipPercent = readLine()!!
                 var floatTip = tipPercent.toFloat()
-
+                
+                // Call the function to calculate the tip and return the result
                 tip = calculateTip(floatBill, floatTip)
-
+            
+                // Display the tip output to the user
                 println("A $tipPercent% tip of of your bill is $$tip")
-
+                
+                // Add the tip to the billsandTips list
                 billsAndTips.add(tip)
             }
             "3" -> println("Goodbye")
